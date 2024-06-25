@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Checks if a file is provided as an argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <file>"
+  exit 1
+fi
+
+# Checks if the file exists
+if [ ! -f "$1" ]; then
+  echo "File not found: $1"
+  exit 1
+fi
+
+# Copy the contents of file
+tr -d '\n' < "$1" | xclip -selection clipboard
+
+echo "$1 copied"
